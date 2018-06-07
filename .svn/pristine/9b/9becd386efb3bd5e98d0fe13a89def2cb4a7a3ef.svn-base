@@ -1,0 +1,10 @@
+package cn.mapper;
+
+import java.util.List;
+
+import cn.pojo.City;
+
+public interface CityMapper {
+
+	List<City> getAllCityById(Long id);
+}

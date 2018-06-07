@@ -1,0 +1,28 @@
+package cn.service;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import cn.mapper.ConsultantMapper;
+import cn.pojo.Consultant;
+
+@Service("consultantService")
+@Transactional(propagation = Propagation.REQUIRED, timeout = -1)
+public class ConsultantServiceImp implements ConsultantService {
+	@Resource
+	private ConsultantMapper consultantMapper;
+
+	@Override
+	public int updateConsultant(Consultant consultant) {
+		return consultantMapper.updateConsultant(consultant);
+	}
+
+	@Override
+	public Consultant getConsultantById(Long id) {
+		return consultantMapper.getConsultantById(id);
+	}
+
+}

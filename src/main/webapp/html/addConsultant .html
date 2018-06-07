@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>咨询管理系统</title>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/up.css"/>
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../js/up.js"></script>
+    <script type="text/javascript" src="../laydate/laydate.js"></script>
+
+</head>
+<body>
+<!--主框架-->
+<div class="index">
+    <!--第一层框架-->
+    <div class="header ">
+        <h2>程序猿教育培训咨询系统</h2>
+        <div class="fl" style="color: white">
+            <span>用户:蒋 敏</span>
+            <span> 部门: 教保科</span>
+            <span>职位: 文员</span>
+            <span> <a href="# " style="color: white">隐藏菜单</a></span>
+            <span><a href="#" style="color: white">修改口令</a></span>
+            <span><a href="#" style="color: white">账户切换</a></span>
+            <span><a href="#" style="color: white">退出系统</a></span>
+        </div>
+    </div>
+    <!--第二层框架-->
+    <div class="down">
+        <!--第二次框架内左侧第一框-->
+        <div class="leftnav">
+            <div class="title ">
+                <span>基本设置</span>
+            </div>
+            <div class="content">
+                <ul class="manager-list">
+                    <li>
+                        <span>咨询管理</span>
+                        <ul class="ask">
+                            <li><a href="#">咨询列表</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>数据统计</span>
+                        <ul class="tongji">
+                            <li><a href="#">咨询统计</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--第二次框架内右侧框上框-->
+        <div class="right">
+
+        </div>
+        <!--右边框-->
+        <div class="admin">
+            <!--主框架-->
+                <div id="sum">
+                        <form action="#" method="post">
+                            <div class="form">
+                            <div class="box">
+                                <div class="first">
+                                    <label > 姓名:</label><span></span>
+                                    <input type="text" class="name"/>
+                                </div>
+
+                                <div class="two">
+                                    <label>性别:</label>
+                                    <input type="radio" name="radio1"  value="男"/>
+                                    <label>男</label>
+                                    <input type="radio" name="radio1" checked value="女"/>
+                                    <label>女</label>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>电话:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div class="two">
+                                    <label>学历:</label>
+                                    <select >
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>QQ:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div class="two">
+                                    <label>来源类型:</label>
+                                    <input type="radio" name="radio2" checked value="移动端 "/>
+                                    <label>移动端</label>
+                                    <input type="radio" name="radio2" value=" PC"/>
+                                    <label>PC</label>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>年龄:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div class="two">
+                                    <label>咨询课程:</label>
+                                    <select >
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>创量人:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div class="two">
+                                    <label>信息来源:</label>
+                                    <select class="xinxi"><!--不能为空。。。。。-->
+                                        <option value="">--请选择--</option>
+                                        <option value="1">--测试--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>关键词:</label>
+                                    <input type="text"/>
+                                </div>
+                                <div class="two">
+                                    <label>学员类型:</label>
+                                    <select >
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="box">
+
+                                <div class="first">
+                                    <label>首咨询时间:</label>
+                                    <input type="text" class="oneTime" readonly   />
+                                </div>
+                                <div class="two">
+                                    <label>工作情况:</label>
+                                    <input type="text" />
+                                </div>
+                            </div>
+                            <div class="box">
+                                <div class="first">
+                                    <label>所在区域:</label>
+                                    省
+                                    <select class="sheng">
+                                        <option value="">--请选择--</option>
+                                    </select>市
+                                    <select class="shi">
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                                <div class="two">
+                                    <label>预约回访时间:</label>
+                                    <input type="text" class="time" id="t"/>
+                                </div>
+
+                            </div>
+                             <div class="com">
+                                 <span>备注/聊天:</span>
+                                 <textarea id="comment" rows="3" cols="85"></textarea>
+                                 <button id="btn">保存</button>
+                                 <button>返回</button>
+                            </div>
+                            <!--解决塌陷-->
+
+                           </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

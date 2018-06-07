@@ -1,0 +1,380 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>程序猿客户信息管理系统</title>
+<script src="js/jquery-easyui-1.5.5.2/jquery.min.js"></script>
+<script src="js/jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+<link rel="stylesheet" href="js/jquery-easyui-1.5.5.2/themes/default/easyui.css">
+<link rel="stylesheet" href="js/jquery-easyui-1.5.5.2/themes/icon.css">
+<script src="js/jquery-easyui-1.5.5.2/locale/easyui-lang-zh_CN.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script> 
+<script src="js/main.js"></script>
+<script src="js/ConsultantList.js"></script>
+
+<style>
+.right {
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    margin-top: 610px;
+    font-weight: bolder;
+    height: 50px;
+    margin-left:160px;
+     color:#7dbad7;
+    border: 1px solid rgb(67, 249, 209,0.08) ;
+    
+}
+</style>
+</head>
+<!---->
+<body class="easyui-layout">
+	<!--对第二部分-->
+	<!-- begin of header -->
+	<!--整个框架-->
+	<div class="header"
+		data-options="region:'north',border:false,split:true">
+
+		<!--头部背景图-->
+		<div class="header-left">
+			<h2 class="superShadow" width="25px" height="25px">程序猿客户信息管理系统</h2>
+
+		</div>
+		<!--头部的右边部分-->
+		<div class="fl">
+			<p>
+				<strong class="easyui-tooltip">admin</strong>，欢迎您！
+			</p>
+			<br />
+			<p>
+				<a href="#" style="color: white">网站首页</a>&nbsp|&nbsp<a href="#"
+					style="color: white">安全退出</a>
+			</p>
+		</div>
+
+	</div>
+	<!--左边的导航栏部分-->
+	<div class="sidebar"
+		data-options="region:'west',split:true,border:true,title:'导航菜单'">
+		<div class="easyui-accordion">
+			<div title="咨询管理" style="padding: 5px;" id="box ">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">咨询列表</a></li>
+					<li iconCls="icon-users"><a href="#">咨询回访</a></li>
+				</ul>
+			</div>
+			<div title="数据统计" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">咨询统计</a></li>
+				</ul>
+			</div>
+			<div title="员工管理" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">员工列表</a></li>
+				</ul>
+			</div>
+			<div title="学员管理" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">学员列表</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- end of sidebar -->
+	<!--第二部分的主框-->
+	<div class="main" data-options="region:'center'">
+		<!--第二部分蓝色条框-->
+			<table id="datagrid" style="width:100%"></table>
+	</div>
+	
+	 	<!-- 添加弹窗 -->
+    <div id="addBox">
+    	<form id="addForm">
+    		<table id="addTable">
+    		<tr>
+    			<th>姓名:</th>
+    			<td><input name="name" id="name"/></td>
+    			<th>性别:</th>
+    			<td>
+    				<span class="radioSpan">
+                		<input type="radio" name="gender" value="男">男</input>
+                		<input type="radio" name="gender" value="女">女</input>
+            		</span>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>年龄:</th>
+    			<td><input type="text" name="age"/></td>
+    			<th>城市:</th>
+    			<td>
+    				<select name="cityId" id="cityId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>电话:</th>
+    			<td><input name="phone" id="phone" /></td>
+    			<th>学历:</th>
+    			<td><select name="educationId">
+					<option value="0">--请选择--</option>
+					<option value="1">--初中--</option>
+					<option value="2">--高中--</option>
+					<option value="3">--大专--</option>
+					<option value="4">--本科--</option>
+					<option value="5">--研究生--</option>
+					<option value="6">--博士--</option>
+    			</select></td>
+    		</tr>
+    		<tr>
+    			<th>QQ:</th>
+    			<td><input name="qq" id="qq"/></td>
+    			<th>首咨时间:</th>
+    			<td><input name="firstTime" id="firstTime"/></td>
+    		</tr>
+    		<tr>
+    			<th>学生类型:</th>
+    			<td>
+    				<select name="studentId" id="studentId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    			<th>关键字:</th>
+    			<td><input type="text" name="keyWord" id="keyWord"/></td>
+    		</tr>
+    		<tr>
+    			<th>描述:</th>
+    			<td><input type="text" name="text" id="text"/></td>
+    			<th>创量人:</th>
+    			<td>
+    				<select name="userId" id="userId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>信息来源:</th>
+    			<td>
+    				<select name="informationId" id="informationId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>咨询课程:</th>
+    			<td>
+    				<select name="lessonId" id="lessonId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    			<th>上门类型:</th>
+    			<td>
+    				<select name="visitId" id="visitId">
+    					<option value="1">--请选择--</option>
+    				</select>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th>经历:</th>
+    			<td colspan="3">
+    				<textarea rows="" cols="" id="experience" name="experience"></textarea>
+    			</td>
+    		</tr>
+    		<tr>
+    			<th colspan="3">
+    				<a href="javascript:void(0)" class="easyui-linkbutton" name="add" >添加</a>
+            		<a href="javascript:void(0)" class="easyui-linkbutton" name="back">清空</a>
+    			</th>
+    		</tr>
+    	</table>
+    	</form>
+    </div>
+	
+		<!-- 查询弹框 -->
+	 <div id="searchBox">
+    	<form id="searchForm">
+    		<table>
+    			<tr>
+    				<th>学员姓名:</th>
+    				<td><input type="text" name="name" id="searchName"/></td>
+    				<th>学历:</th>
+    				<td>
+    					<select name="educationId" id="searchEducationId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>咨询师:</th>
+    				<td>
+    					<select name="userId" id="searchUserId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    				<th>学员类型:</th>
+    				<td>
+    					<select name="studentId" id="searchStudentId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>首咨时间范围:</th>
+    				<td><input type="text" name="first1" id="first1"/>至<input type="text" name="first2" id="first2"/></td>
+    				<th>上门类型:</th>
+    				<td>
+    					<select name="visitId" id="searchVisitId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>最后咨询时间:</th>
+    				<td><input type="text" name="last1" id="last1"/>至<input type="text" name="last2" id="last2"/></td>
+    				<th>信息来源:</th>
+    				<td>
+    					<select name="informationId" id="searchInformationId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    			</tr>
+    			<tr>
+    				<th>关键字:</th>
+    				<td><input type="text" name="keyWord" id="searchKeyWord"/></td>
+    				<th>咨询课程:</th>
+    				<td>
+    					<select name="lessonId" id="searchLessonId">
+    						<option value="0">--请选择--</option>
+    					</select>
+    				</td>
+    			</tr>
+    		</table>
+    		<tr><th colspan="4">
+    			<a href="javascript:void(0)" class="easyui-linkbutton" name="search" >查询</a>
+    			<a href="javascript:void(0)" class="easyui-linkbutton" name="insert" >清空</a>
+    		</th></tr>
+    	</form>
+    </div>
+
+
+	<!-- 修改弹窗 -->
+	<div id="updateBox">
+		<form id="updateForm">
+			<table id="updateTable">
+			<input type="hidden" name="id" id="updateId"/>
+				<tr>
+					<th>姓名:</th>
+					<td><input name="name" id="updateName"/></td>
+					<th>性别:</th>
+					<td>
+    				<span class="radioSpan">
+                		<input type="radio" name="gender" value="男">男</input>
+						<input type="radio" name="gender" value="女">女</input>
+            		</span>
+					</td>
+				</tr>
+				<tr>
+					<th>年龄:</th>
+					<td><input type="text" name="age" id="updateAge"/></td>
+					<th>城市:</th>
+					<td>
+						<!-- <select name="cityId" id="updateCityId">
+							<option value="0">--请选择--</option>
+						</select> -->
+						<input type="text" name="cityId" id="updateCityId"/>
+					</td>
+				</tr>
+				<tr>
+					<th>电话:</th>
+					<td><input name="phone" id="updatePhone" /></td>
+					<th>学历:</th>
+					<td><select name="educationId" id="updateEducationId">
+						<option value="0">--请选择--</option>
+						<option value="1">--初中--</option>
+						<option value="2">--高中--</option>
+						<option value="3">--大专--</option>
+						<option value="4">--本科--</option>
+						<option value="5">--研究生--</option>
+						<option value="6">--博士--</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th>QQ:</th>
+					<td><input name="qq" id="updateQQ"/></td>
+					<th>首咨时间:</th>
+					<td><input name="firstTime" id="updateFirstTime" readonly="readonly"/></td>
+				</tr>
+				<tr>
+					<th>学生类型:</th>
+					<td>
+						<select name="studentId" id="updateStudentId">
+							<option value="0">--请选择--</option>
+							<option value="1">--A--</option>
+							<option value="2">--B--</option>
+							<option value="3">--C--</option>
+							<option value="4">--D--</option>
+							<option value="5">--已报班--</option>
+						</select>
+					</td>
+					<th>关键字:</th>
+					<td><input type="text" name="keyWord" id="updateKeyWord"/></td>
+				</tr>
+				<tr>
+					<th>描述:</th>
+					<td><input type="text" name="text" id="updateText"/></td>
+				</tr>
+				<tr>
+					<th>信息来源:</th>
+					<td>
+						<select name="informationId" id="updateInformationId">
+							<option value="0">--请选择--</option>
+							<option value="1">--百度推广--</option>
+							<option value="2">--传单--</option>
+							<option value="3">--同学推荐--</option>
+							<option value="4">--上门--</option>
+						</select>
+					</td>
+					<th>回访时间:</th>
+					<td>
+						<input type="text" name="lastTime" id="updateLastTime">
+					</td>
+				</tr>
+				<tr>
+					<th>咨询课程:</th>
+					<td>
+						<select name="lessonId" id="updateLessonId">
+							<option value="0">--请选择--</option>
+							<option value="1">--java--</option>
+							<option value="2">--UI--</option>
+							<option value="3">--.NET--</option>
+							<option value="4">--C--</option>
+							<option value="5">--PHP--</option>
+						</select>
+					</td>
+					<th>上门类型:</th>
+					<td>
+						<select name="visitId" id="updateVisitId">
+							<option value="0">--请选择--</option>
+							<option value="1">已上门</option>
+							<option value="2">电上</option>
+							<option value="3">未上门</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<th>经历:</th>
+					<td colspan="3">
+						<textarea rows="" cols="" id="updateExperience" name="experience"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th colspan="3">
+						<a href="javascript:void(0)" class="easyui-linkbutton" name="edit" >修改</a>
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

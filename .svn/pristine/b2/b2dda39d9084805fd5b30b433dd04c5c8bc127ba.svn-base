@@ -1,0 +1,188 @@
+#sum{
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid lightsteelblue;
+}
+.form{
+    height: 100%;
+}
+.box{
+    width: 100%;
+    height:5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    float: left;
+}
+.first,.two{
+    width: 40%;
+    float: left;
+    padding-top: 1%;
+    text-align: right;
+    margin-left: 2%;
+}
+input,option{
+    height: 22px;
+}
+input:focus{
+    background-color: rgb(21, 216, 255);
+    border: 1px solid #2b4fff;
+}
+option{
+    width: 90px;
+}
+button{
+    margin-top: 1%;
+    height: 30px;
+    width:18%;
+    font-size: 20px;
+    color: white;
+    border-radius: 5%;
+    background-color: #5181ff;
+}
+button {
+    cursor: pointer;
+}
+#btn{
+    margin-left:30%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+/*对头部图片进行设置*/
+.index .header {
+    width: 100%;
+    height: 90px;
+    background-color: #003398;
+    background-size: cover;
+}
+
+
+.fl { /*对账户切换和推出登陆防止左浮动*/
+    float: right;
+    font-weight: bolder;
+    text-indent: 0.5em;
+    text-align: center;
+    font-size: 15px;
+    margin: 40px 300px 0 100px;
+
+}
+
+h2 {
+    float: left;
+    margin-top: 25px;
+    color: white;
+    text-indent: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+
+.leftnav { /*学员管理背景颜色进行设置*/
+
+    width: 180px;
+    height: 560px;
+    background-color: rgba(73, 247, 203, 0.27);
+    position: absolute;
+    left: 0px;
+    top: 90px;
+
+}
+
+.title { /*基本设置的設置*/
+    width: 180px;
+    line-height: 50px;
+    height: 50px;
+    background-color: #f7f164;
+    padding-left: 55px;
+    box-sizing: border-box;
+}
+
+.down span {
+    color: #000000;
+    font-size: 18px;
+    margin-right: 6px;
+    font-weight: bold;
+
+}
+
+.content li:first-of-type .ask{
+    font-size: 14px;
+    display: none;
+}
+
+.content li:nth-of-type(2) .tongji{
+    font-size: 14px;
+    display: none;
+}
+
+
+
+.content span {
+    font-size: 14px;
+    display: inline-block;
+    height: 40px;
+    line-height: 30px;
+    color: #4f71b0;
+
+}
+
+.right {
+    width: 1165px;
+    height: 40px;
+    margin-left: 200px;
+    border-bottom: 1px solid gainsboro;
+}
+
+.right li {
+    height: 40px;
+    line-height: 40px;
+}
+
+/*對左邊框字體懸浮進行設置*/
+.manager-list > li:hover {
+    background: #CCCFF0;
+    cursor: pointer;
+}
+
+.manager-list { /*对左边框文字进行设置*/
+    width: 178px;
+    text-align: center;
+    font-family: 宋体;
+    background-color: rgba(75, 255, 210, 0.07);
+    font-weight: bolder;
+}
+
+.manager-list > li {
+    box-sizing: border-box;
+    border-bottom: 1px solid #252bf9; /*對左邊框的橫綫顔色設置*/
+}
+
+.admin {
+    overflow: auto;
+    height: 500px;
+   margin: 0px 10px 10px 190px;
+    border-radius: 4px;
+   /* border: 1px solid black;*/
+
+
+
+}
+
+/* 设置输入框和搜索 将其整体右移*/
+.searchBox {
+    text-align: center;
+    margin-top: 15px;
+    margin-right: 630px;
+}
+
+
+
+

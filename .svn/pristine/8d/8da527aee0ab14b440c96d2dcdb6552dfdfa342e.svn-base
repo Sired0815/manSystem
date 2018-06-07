@@ -1,0 +1,9 @@
+package cn.mapper;
+
+import cn.pojo.Consultant;
+
+public interface ConsultantMapper {
+
+	// 咨询者修改
+	int updateConsultant(Consultant consultant);
+}

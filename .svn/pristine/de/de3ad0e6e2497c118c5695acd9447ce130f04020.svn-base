@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="cn.mapper.ConsultantMapper">
+        <update id="updateConsultant">
+        <set>
+        <if test="name!=null and name!=''">
+        name=#{name},
+        </if>
+        <if test="age>0">
+        age=#{age},
+        </if>
+        <if test="gender!=null and gender!=''">
+        gender=#{gender},
+        </if>
+        <if test="phone!=null and phone!=''">
+        </if>
+        qq=#{qq},
+        <if test="experience!=null and experience!=''">
+        experience=#{experience},
+        </if>
+        <if test="firstTime!='null'">
+        firstTime=#{firstTime},
+        </if>
+        lastTime=#{lastTime},
+        <if test="studentId>0">
+        studentId=#{studentId},
+        </if>
+        keyWord=#{keyWord},
+        text=#{text},
+        
+        <if test="userId>0">
+        userId=#{userId},
+        </if>
+        <if test="informationId>0">
+        informationId=#{informationId},
+        </if>
+        <if test="educationId>0">
+        educationId=#{educationId},
+        </if>
+        <if test="lessonId>0">
+        lessonId=#{lessonId},
+        </if>
+        <if test="visitId>0">
+        visitId=#{visitId},
+        </if>
+        <if test="educationId>0">
+        cityId=#{cityId},
+        </if>
+        </set>
+        where id=#{id}
+        </update>
+        </mapper>

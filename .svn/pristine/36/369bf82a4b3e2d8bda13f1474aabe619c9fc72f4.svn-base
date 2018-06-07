@@ -1,0 +1,12 @@
+package cn.service;
+
+import cn.pojo.Consultant;
+
+public interface ConsultantService {
+
+	// 根据ID获得咨询者信息
+	Consultant getConsultantById(Integer id);
+
+	// 咨询者修改
+	int updateConsultant(Consultant consultant);
+}

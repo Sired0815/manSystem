@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <mapper namespace="cn.mapper.ConsultantMapper">
+        <select id="getConsultantById" resultType="Consultant">
+        select consultant.*,user.name userName from consultant,user where consultant.id=#{id} and consultant.userId=user.id
+        </select>
+        <update id="updateConsultant"> 
+        update consultant
+        <set>
+        <if test="name!=null and name!=''">
+        name=#{name},
+        </if>
+        <if test="age>0">
+        age=#{age},
+        </if>
+        <if test="gender!=null and gender!=''">
+        gender=#{gender},
+        </if>
+        <if test="phone!=null and phone!=''">
+        </if>
+        qq=#{qq},
+        <if test="experience!=null and experience!=''">
+        experience=#{experience},
+        </if>
+        <if test="firstTime!='null'">
+        firstTime=#{firstTime},
+        </if>
+        lastTime=#{lastTime},
+        <if test="studentId>0">
+        studentId=#{studentId},
+        </if>
+        keyWord=#{keyWord},
+        text=#{text},
+        
+        <if test="userId>0">
+        userId=#{userId},
+        </if>
+        <if test="informationId>0">
+        informationId=#{informationId},
+        </if>
+        <if test="educationId>0">
+        educationId=#{educationId},
+        </if>
+        <if test="lessonId>0">
+        lessonId=#{lessonId},
+        </if>
+        <if test="visitId>0">
+        visitId=#{visitId},
+        </if>
+        <if test="educationId>0">
+        cityId=#{cityId},
+        </if>
+        </set>
+        where id=#{id}
+        </update>
+        
+        <!-- 获得所有咨询者 -->
+ 	<select id="getAllConsultant" resultType="Consultant">
+ 		 select 
+ 		 c.*, 
+ 		 s.name studentName,
+ 		 e.name educationName, 
+ 		 u.name userName,
+ 		 i.name informationName,
+ 		 v.name visitName,
+ 		 l.name lessonName 
+ 		 from 
+ 		 consultant c,
+ 		 studenttype s,
+ 		 education e, 
+ 		 user u,  
+ 		 information i, 
+ 		 visit v,
+ 		 lesson l 
+ 		 where 1=1
+ 		 <if test="consultant.name!=null and consultant.name!=''">
+ 			and c.name like concat("%",#{consultant.name},"%")
+ 		 </if> 
+ 		 <if test="consultant.educationId>0">
+ 			and c.educationId=#{consultant.educationId}
+ 		 </if>
+ 		 <if test="consultant.userId>0">
+ 			and c.userId=#{consultant.userId}
+ 		 </if>
+ 		 <if test="first1!=null and first1!='' and first2!=null and first1!=''">
+ 			and c.firstTime between #{first1} and #{first2}
+ 		 </if>
+ 		 <if test="consultant.informationId>0">
+ 			and c.informationId=#{consultant.informationId}
+ 		 </if>
+ 		 <if test="consultant.visitId>0">
+ 			and c.visitId=#{consultant.visitId}
+ 		 </if>
+ 		 <if test="consultant.studentId>0">
+ 			and c.studentId=#{consultant.studentId}
+ 		 </if>
+ 		 <if test="consultant.lessonId>0">
+ 			and c.lessonId=#{consultant.lessonId}
+ 		 </if>
+ 		 <if test="consultant.keyWord!=null and consultant.keyWord!=''">
+ 		 	and c.keyWord like concat("%",#{consultant.keyWord},"%")
+ 		 </if>
+ 		 <if test="last1!=null and last1!='' and last2!=null and last2!=''">
+ 			and c.lastTime between #{last1} and #{last2}
+ 		 </if>
+ 		 	and
+	 		c.studentId =s.id
+	 		and 
+	 		c.educationId=e.id
+	 		and 
+	 		c.userId=u.id
+	 		and 
+	 		c.informationId=i.id
+	 		and 
+	 		c.visitId=v.id
+	 		and 
+	 		c.lessonId=l.id
+	 		order by c.id
+	 		limit #{page},#{rows}
+ 	</select>
+ 	<!-- 获得模糊查询总数 -->
+ 	<select id="getSum" resultType="int">
+ 		select count(id) from consultant  where 1=1
+ 		<if test="consultant.name!=null and consultant.name!=''">
+ 			and name like concat("%",#{consultant.name},"%")
+ 		</if>
+ 		<if test="consultant.educationId>0">
+ 			and educationId=#{consultant.educationId}
+ 		</if>
+ 		<if test="consultant.userId>0">
+ 			and userId=#{consultant.userId}
+ 		</if>
+ 		<if test="first1!=null and first1!='' and first2!=null and first1!=''">
+ 			and firstTime between #{first1} and #{first2}
+ 		</if>
+ 		<if test="consultant.informationId>0">
+ 			and informationId=#{consultant.informationId}
+ 		</if>
+ 		<if test="consultant.visitId>0">
+ 			and visitId=#{consultant.visitId}
+ 		</if>
+ 		<if test="consultant.studentId>0">
+ 			and studentId=#{consultant.studentId}
+ 		</if>
+ 		<if test="consultant.lessonId>0">
+ 			and lessonId=#{consultant.lessonId}
+ 		</if>
+ 		<if test="last1!=null and last1!='' and last2!=null and last1!=''">
+ 			and lastTime between #{last1} and #{last2}
+ 		</if>
+ 	</select>
+ 	<!-- 添加咨询者信息 -->
+ 	<insert id="addConsultant">
+ 		insert into consultant
+ 		(name,age,gender,phone,qq,experience,firstTime,lastTime,studentId,keyWord,text,userId,informationId,educationId,lessonId,visitId,cityId) 
+ 		value
+ 		(#{name},#{age},#{gender},#{phone},#{qq},#{experience},#{firstTime},#{lastTime},#{studentId},#{keyWord},#{text},#{userId},#{informationId},#{educationId},#{lessonId},#{visitId},#{cityId})
+ 	</insert>
+        </mapper>

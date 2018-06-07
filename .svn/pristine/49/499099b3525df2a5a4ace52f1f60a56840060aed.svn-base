@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>客户管理资讯系统</title>
+<link rel="stylesheet" type="text/css"
+	href="../js/jquery-easyui-1.5.5.2/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript"
+	src="../js/jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+<style type="text/css">
+#login_table {
+	margin: 15px;
+	width: 250px;
+	text-align: center;
+}
+
+#login_table td {
+	padding: 2px;
+	height: 25px;
+	font-size: 12px
+}
+</style>
+</head>
+<body>
+	<div class="easyui-window" title="咨询量管理系统" resizable="false"
+		draggable="true" id="login_win" iconCls="icon-ok" minimizable="false"
+		maximizable="false" closable="false" collapsible="false"
+		style="top: 180px">
+		<form id="loginFrm">
+			<table width="180" id="login_table">
+				<tr>
+					<td>中 心:</td>
+					<td align="left"><input type="text" id="zhongxin"
+						name="emp.zhongxin" style="width: 100px;" maxlength="22"></td>
+				</tr>
+				<tr>
+					<td>部 门:</td>
+					<td align="left"><select id="depart" name="emp.depart"
+						style="width: 100px;">
+							<option>请选择</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>职 位:</td>
+					<td align="left"><select id="jobId" name="emp.job.id"
+						style="width: 100px;">
+							<option value="-1">请选择</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>用 户:</td>
+					<td align="left"><select id="empname" name="emp.name"
+						style="width: 100px;">
+							<option>请选择</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td>密 码:</td>
+					<td align="left"><input type="password" id="password"
+						name="emp.password" onblur="checkPassWord(this)"
+						placeholder="请输入密码" style="width: 100px;" maxlength="22"></td>
+				</tr>
+				<tr>
+					<td>验证码:</td>
+					<td align="left"><input type="text" id="code" name="code"
+						style="width: 35px" maxlength="4" /> <img src="img/yanzm.jpg"
+						onClick="changeValidateCode(this)" title="点击图片刷新验证码" /> <span></span>
+
+					</td>
+				</tr>
+				<tr>
+					<td>记住我:</td>
+					<td align="left" style="padding-left: 0px;"><input
+						title="下次登录不用再输入密码，公共场合慎用" type="checkbox" value="true"
+						name="rememberMe" id="rememberMe"></td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><a href="javascript:doLogin();"
+						class="easyui-linkbutton" id="btnLogin">登录</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

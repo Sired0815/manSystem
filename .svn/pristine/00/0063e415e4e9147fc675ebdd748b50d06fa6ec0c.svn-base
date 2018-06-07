@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+ 	http://www.springframework.org/schema/beans/spring-beans.xsd
+ 	http://www.springframework.org/schema/context
+ 	http://www.springframework.org/schema/context/spring-context.xsd
+ 	http://www.springframework.org/schema/tx
+ 	http://www.springframework.org/schema/tx/spring-tx.xsd
+ ">
+ 	<!-- 1、扫描添加注解的bean组件 -->
+	<context:component-scan base-package="cn.pojo,cn.service,cn.test"/>
+	
+	<!-- 2、读取jdbc.properties文件,配置数据源 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- name值不能自定义 -->
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+	
+	<!-- 3、配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
+		<!-- !!!name值不能自定义 -->
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url" value="${url}"/>
+		<property name="username" value="${userName}"/>
+		<property name="password" value="${passWord}"/>
+	</bean>
+	
+	<!-- 4、配置sqlSession工厂 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- !!!name值不能自定义 -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="typeAliasesPackage" value="cn.pojo"/>
+	</bean>
+	
+	<!-- 5、自动扫描mapper组件 -->
+	<bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- !!!name值不能自定义 -->
+		<property name="basePackage" value="cn.mapper" />
+	</bean>
+	
+	<!-- 6、配置事务管理器 -->
+	<bean id= "transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+		<!-- !!!name值不能自定义 -->
+		<property name="dataSource"  ref="dataSource"/>
+	</bean>
+	
+	<!-- 7、启动注解事务功能 -->
+	<tx:annotation-driven />
+</beans>

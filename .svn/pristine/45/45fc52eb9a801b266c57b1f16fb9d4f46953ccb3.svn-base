@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/manSystem?useUnicode=true&charset=utf8&useSSL=true
+userName=root
+passWord=admin

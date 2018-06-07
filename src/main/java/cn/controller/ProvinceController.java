@@ -1,0 +1,40 @@
+package cn.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+
+import cn.pojo.City;
+import cn.pojo.Province;
+import cn.service.CityService;
+import cn.service.ProvinceService;
+
+@Controller
+@RequestMapping("/province")
+public class ProvinceController {
+	@Resource
+	private ProvinceService provinceService;
+	@Resource
+	private CityService cityService;
+
+	@RequestMapping(value = "/getAllProvince", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String getAllProvince() {
+		List<Province> list = provinceService.getAllProvince();
+		return JSON.toJSONString(list);
+	}
+
+	@RequestMapping(value = "/getAllCityById", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String getAllCityById(Long provinceId) {
+		List<City> list = cityService.getAllCityById(provinceId);
+		return JSON.toJSONString(list);
+	}
+
+}

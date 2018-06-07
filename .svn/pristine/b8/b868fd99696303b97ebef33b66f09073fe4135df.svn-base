@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>程序猿客户信息管理系统</title>
+<link rel="stylesheet" type="text/css"
+	href="../js/jquery-easyui-1.5.5.2/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<script src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript"
+	src="../js/jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+<script src="../js/main.js"></script>
+
+<script>
+	$(function() {
+		$("h2").each(function(index, element) {
+			var animation = TweenMax.to(this, 0.2, {
+				className : '+= superShadow',
+				marginTop : '-10px',
+				marginBottom : '10px',
+				ease : Power1.easeIn,
+				paused : true
+			});
+			element.animation = animation;
+		})
+		$('h2').hover(function() {
+			this.animation.play()
+		}, function() {
+			this.animation.reverse();
+		})
+	})
+</script>
+
+</head>
+<!---->
+<body class="easyui-layout">
+	<!--对第二部分-->
+	<!-- begin of header -->
+	<!--整个框架-->
+	<div class="header"
+		data-options="region:'north',border:false,split:true">
+
+		<!--头部背景图-->
+		<div class="header-left">
+			<h2 class="superShadow" width="25px" height="25px">程序猿客户信息管理系统</h2>
+
+		</div>
+		<!--头部的右边部分-->
+		<div class="fl">
+			<p>
+				<strong class="easyui-tooltip">admin</strong>，欢迎您！
+			</p>
+			<br />
+			<p>
+				<a href="#" style="color: white">网站首页</a>&nbsp|&nbsp<a href="#"
+					style="color: white">安全退出</a>
+			</p>
+		</div>
+
+	</div>
+	<!--左边的导航栏部分-->
+	<div class="sidebar"
+		data-options="region:'west',split:true,border:true,title:'导航菜单'">
+		<div class="easyui-accordion">
+			<div title="咨询管理" style="padding: 5px;" id="box ">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">咨询列表</a></li>
+					<li iconCls="icon-users"><a href="#">咨询回访</a></li>
+				</ul>
+			</div>
+			<div title="数据统计" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">咨询统计</a></li>
+				</ul>
+			</div>
+			<div title="员工管理" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">员工列表</a></li>
+				</ul>
+			</div>
+			<div title="学员管理" style="padding: 5px;">
+				<ul class="easyui-tree side-tree">
+					<li iconCls="icon-chart-organisation"><a href="#">学员列表</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- end of sidebar -->
+	<!--第二部分的主框-->
+	<div class="main" data-options="region:'center'">
+		<!--第二部分蓝色条框-->
+		<div id="tabs" class="easyui-tabs"></div>
+		<!--时间和版权的div]-->
+		<div class="right">
+			@版权所有 归项目三组 <br />
+			<br />
+			<span id="date"> </span>
+		</div>
+	</div>
+</body>
+</html>

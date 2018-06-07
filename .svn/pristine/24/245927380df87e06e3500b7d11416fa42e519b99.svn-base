@@ -1,0 +1,14 @@
+package cn.mapper;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.pojo.Consultant;
+
+public interface ConsultantMapper {
+
+	// 根据ID获得咨询者信息
+	Consultant getConsultantById(@Param("id") Integer id);
+
+	// 咨询者修改
+	int updateConsultant(Consultant consultant);
+}
